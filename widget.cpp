@@ -6,9 +6,10 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    setFixedWidth(390);
-    setMinimumHeight(800);
-    resize(390,860);
+    screenh = getScreenHeight();
+    screenw = getScreenWidth();
+    setFixedWidth(screenw*0.2);
+    setMinimumHeight(screenh*0.8);
     setWindowFlags(Qt::CustomizeWindowHint);
     setWindowTitle("JYMusicPlayer");
     //

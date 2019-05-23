@@ -1,12 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
-#include <QMouseEvent>
-#include <QLabel>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include "global.h"
 
 namespace Ui {
 class Widget;
@@ -32,7 +27,7 @@ private:
     //top
     QLabel *titleL;
     QPushButton *minBtn, *closeBtn;
-
+    int screenh, screenw;
 
 
     //for mouse event
