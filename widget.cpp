@@ -6,14 +6,9 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    screenh = getScreenHeight();
-    screenw = getScreenWidth();
-    setFixedWidth(screenw*0.2);
-    setMinimumHeight(screenh*0.8);
-    setWindowFlags(Qt::CustomizeWindowHint);
-    setWindowTitle("JYMusicPlayer");
-    //
+    initWidget();
     initControls();
+    initStyleSheet();
 }
 
 Widget::~Widget()
@@ -21,21 +16,39 @@ Widget::~Widget()
     delete ui;
 }
 
+void Widget::initWidget()
+{
+    setObjectName("Widget");
+    QRect screenRect = QApplication::desktop()->screenGeometry();
+    setFixedWidth(screenRect.width()/10*2);
+    setMinimumHeight(screenRect.height()/10*8);
+    setWindowFlags(Qt::CustomizeWindowHint);
+    setWindowTitle("JYMusicPlayer");
+}
+
+void Widget::initStyleSheet()
+{
+    QFile file(":/qss/default.qss");
+    file.open(QFile::ReadOnly);
+    if (file.isOpen())
+    {
+        QString styleSheet = this->styleSheet();
+        styleSheet += QLatin1String(file.readAll());
+        this->setStyleSheet(styleSheet);
+    }
+}
 
 void Widget::initControls()
 {
     //top
     titleL= new QLabel(this);
-    titleL->setFixedHeight(32);
-    titleL->setPixmap(QPixmap(":/pic/shitvip.png"));
+    titleL->setObjectName("titleL");
     minBtn = new QPushButton(this);
-    minBtn->setIcon(QIcon(QPixmap(":/pic/min.png")));
-    minBtn->setFixedHeight(32);
-    minBtn->setFlat(true);
+    minBtn->setObjectName("minBtn");
+    connect(minBtn, SIGNAL(clicked()), SLOT(do_minBtn_clicked()));
     closeBtn = new QPushButton(this);
-    closeBtn->setIcon(QIcon(QPixmap(":/pic/close.png")));
-    closeBtn->setFixedHeight(32);
-    closeBtn->setFlat(true);
+    closeBtn->setObjectName("closeBtn");
+    connect(closeBtn, SIGNAL(clicked()), SLOT(do_closeBtn_clicked()));
     QHBoxLayout *topleftLayout = new QHBoxLayout;
     topleftLayout->addWidget(titleL);
     topleftLayout->setAlignment(Qt::AlignLeft);
@@ -47,9 +60,34 @@ void Widget::initControls()
     topLayout->addLayout(topleftLayout);
     topLayout->addLayout(toprightLayout);
 
+    audioui = new AudioWidget(this);
+    mvui = new MVWidget(this);
+    downloadui = new DownloadWidget(this);
+
+    mainTab = new QTabWidget(this);
+    mainTab->setObjectName("mainTab");
+    mainTab->insertTab(0, audioui,"");
+    mainTab->insertTab(1, mvui,"");
+    mainTab->insertTab(2, downloadui,"");
+
     QVBoxLayout *allLayout = new QVBoxLayout;
     allLayout->addLayout(topLayout);
+    allLayout->addWidget(mainTab);
+    allLayout->setMargin(0);
     setLayout(allLayout);
+}
+
+void Widget::do_minBtn_clicked()
+{
+    if(isMinimized())
+        showNormal();
+    else
+        showMinimized();
+}
+
+void Widget::do_closeBtn_clicked()
+{
+    close();
 }
 
 void Widget::mousePressEvent(QMouseEvent *event)
@@ -63,11 +101,11 @@ void Widget::mouseMoveEvent(QMouseEvent *event)
 {
     if (mMoveing && (event->buttons() && Qt::LeftButton)
             && (event->globalPos()-mMovePosition).manhattanLength() > QApplication::startDragDistance())
-        {
-            move(event->globalPos()-mMovePosition);
-            mMovePosition = event->globalPos() - pos();
-        }
-        return QWidget::mouseMoveEvent(event);
+    {
+        move(event->globalPos()-mMovePosition);
+        mMovePosition = event->globalPos() - pos();
+    }
+    return QWidget::mouseMoveEvent(event);
 }
 
 void Widget::mouseReleaseEvent(QMouseEvent *event)

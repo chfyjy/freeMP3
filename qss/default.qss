@@ -1,0 +1,112 @@
+QWidget#Widget
+{
+border:none;
+}
+
+QLabel#titleL
+{
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/shitvip.png);
+}
+
+QPushButton#closeBtn
+{
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/close.png);
+}
+
+QPushButton#closeBtn:hover
+{
+        background-image: url(:/pic/close1.png);
+}
+
+QPushButton#closeBtn:pressed
+{
+	background-image: url(:/pic/close1.png);
+}
+
+
+QPushButton#minBtn {
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/min.png);
+}
+
+QPushButton#minBtn:hover
+{
+        background-image: url(:/pic/min1.png);
+}
+
+QPushButton#minBtn:pressed
+{
+        background-image: url(:/pic/min1.png);
+}
+
+
+QTabWidget::pane{
+        border:none;
+}
+QTabWidget::tab-bar{
+        alignment:center;
+}
+QTabBar::tab:first{
+        background:transparent;
+        color:white;
+        min-width:30ex;
+        min-height:10ex;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-image: url(:/pic/mp3.png);
+}
+QTabBar::tab:first:hover{
+background-image: url(:/pic/mp31.png);
+}
+QTabBar::tab:first:selected{
+background-image: url(:/pic/mp31.png);
+}
+
+
+QTabBar::tab:middle{
+        background:transparent;
+        color:white;
+        min-width:30ex;
+        min-height:10ex;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-image: url(:/pic/mv.png);
+}
+QTabBar::tab:middle:hover{
+background-image: url(:/pic/mv1.png);
+}
+QTabBar::tab:middle:selected{
+background-image: url(:/pic/mv1.png);
+}
+
+
+QTabBar::tab:last{
+        background:transparent;
+        color:white;
+        min-width:30ex;
+        min-height:10ex;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-image: url(:/pic/down.png);
+}
+QTabBar::tab:last:hover{
+background-image: url(:/pic/down1.png);
+}
+QTabBar::tab:last:selected{
+background-image: url(:/pic/down1.png);
+}
+

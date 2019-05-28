@@ -10,6 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = FreeMP3
 TEMPLATE = app
+RC_ICONS = logo.ico
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -25,16 +26,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        main.cpp \
-        widget.cpp \
-    global.cpp
+    widget.cpp \
+    main.cpp \
+    audiowidget.cpp \
+    mvwidget.cpp \
+    downloadwidget.cpp
 
 HEADERS += \
-        widget.h \
-    global.h
+    widget.h \
+    audiowidget.h \
+    mvwidget.h \
+    downloadwidget.h
 
 FORMS += \
-        widget.ui
+        widget.ui \
+    audiowidget.ui \
+    mvwidget.ui \
+    downloadwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
