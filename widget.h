@@ -11,6 +11,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QTabWidget>
+#include <QProgressBar>
+#include <QComboBox>
 
 #include "audiowidget.h"
 #include "mvwidget.h"
@@ -43,17 +45,27 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
 
+private:
+    void hideTimeInfo();
 
 private:
     Ui::Widget *ui;
-    AudioWidget *audioui;
-    DownloadWidget *downloadui;
-    MVWidget *mvui;
 
     //top
     QLabel *titleL;
     QPushButton *minBtn, *closeBtn;
+    //middle
     QTabWidget* mainTab;//mp3 mv 下载
+    AudioWidget *audioui;
+    DownloadWidget *downloadui;
+    MVWidget *mvui;
+    //bottom
+    QLabel *curtimeL, *alltimeL;
+    QProgressBar *playtimePB;
+
+    //footer
+    QComboBox *modelCB;
+    QPushButton *prevBtn, *playBtn, *nextBtn, *pauseBtn;
 
 
     //for mouse event

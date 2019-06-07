@@ -6,6 +6,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    mMoveing = false;
     initWidget();
     initControls();
     initStyleSheet();
@@ -22,7 +23,7 @@ void Widget::initWidget()
     QRect screenRect = QApplication::desktop()->screenGeometry();
     setFixedWidth(screenRect.width()/10*2);
     setMinimumHeight(screenRect.height()/10*8);
-    setWindowFlags(Qt::CustomizeWindowHint);
+    setWindowFlags(Qt::FramelessWindowHint);
     setWindowTitle("JYMusicPlayer");
 }
 
@@ -60,6 +61,7 @@ void Widget::initControls()
     topLayout->addLayout(topleftLayout);
     topLayout->addLayout(toprightLayout);
 
+    //middle
     audioui = new AudioWidget(this);
     mvui = new MVWidget(this);
     downloadui = new DownloadWidget(this);
@@ -69,14 +71,69 @@ void Widget::initControls()
     mainTab->insertTab(0, audioui,"");
     mainTab->insertTab(1, mvui,"");
     mainTab->insertTab(2, downloadui,"");
+    mainTab->setCurrentIndex(0);
 
+    //bottom
+    curtimeL = new QLabel(this);
+    curtimeL->setObjectName("curtimeL");
+    alltimeL = new QLabel(this);
+    alltimeL->setObjectName("alltimeL");
+    playtimePB = new QProgressBar(this);
+    playtimePB->setObjectName("playtimePB");
+    hideTimeInfo();
+    QHBoxLayout *bottomLayout = new QHBoxLayout;
+    bottomLayout->addWidget(curtimeL);
+    bottomLayout->addWidget(playtimePB);
+    bottomLayout->addWidget(alltimeL);
+    bottomLayout->setAlignment(Qt::AlignCenter);
+
+    //footer
+    modelCB = new QComboBox(this);
+    modelCB->setObjectName("modelCB");
+    modelCB->setEditable(false);
+    modelCB->showPopup();
+    modelCB->addItem(QIcon(":/pic/orderplay.png"),QObject::tr("列表循环"));
+    modelCB->addItem(QIcon(":/pic/onecircle.png"),QObject::tr("单曲循环"));
+    modelCB->addItem(QIcon(":/pic/randplay.png"), QObject::tr("随机播放"));
+
+    QHBoxLayout *footerLayout1 = new QHBoxLayout;
+    prevBtn = new QPushButton(this);
+    prevBtn->setObjectName("prevBtn");
+    playBtn = new QPushButton(this);
+    playBtn->setObjectName("playBtn");
+    nextBtn = new QPushButton(this);
+    nextBtn->setObjectName("nextBtn");
+    pauseBtn = new QPushButton(this);
+    pauseBtn->setObjectName("pauseBtn");
+    pauseBtn->setHidden(true);
+    footerLayout1->addWidget(prevBtn);
+    footerLayout1->addWidget(playBtn);
+    footerLayout1->addWidget(pauseBtn);
+    footerLayout1->addWidget(nextBtn);
+
+
+    QHBoxLayout *footerLayout = new QHBoxLayout;
+    footerLayout->addWidget(modelCB);
+    footerLayout->addLayout(footerLayout1);
+    footerLayout->setStretch(0, 4);
+    footerLayout->setStretch(1, 7);
+
+    //all
     QVBoxLayout *allLayout = new QVBoxLayout;
     allLayout->addLayout(topLayout);
     allLayout->addWidget(mainTab);
-    allLayout->setMargin(0);
+    allLayout->addLayout(bottomLayout);
+    allLayout->addLayout(footerLayout);
+    allLayout->setMargin(10);
     setLayout(allLayout);
 }
 
+void Widget::hideTimeInfo()
+{
+    playtimePB->setHidden(true);
+    alltimeL->setHidden(true);
+    curtimeL->setHidden(true);
+}
 void Widget::do_minBtn_clicked()
 {
     if(isMinimized())

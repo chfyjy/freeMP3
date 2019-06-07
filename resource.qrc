@@ -26,5 +26,7 @@
         <file>pic/mp31.png</file>
         <file>pic/mv.png</file>
         <file>pic/mv1.png</file>
+        <file>pic/import.png</file>
+        <file>pic/import1.png</file>
     </qresource>
 </RCC>

@@ -1,6 +1,7 @@
 QWidget#Widget
 {
 border:none;
+background-color: rgb(64,224, 205)
 }
 
 QLabel#titleL
@@ -30,7 +31,7 @@ QPushButton#closeBtn:hover
 
 QPushButton#closeBtn:pressed
 {
-	background-image: url(:/pic/close1.png);
+        background-image: url(:/pic/close1.png);
 }
 
 
@@ -71,9 +72,11 @@ QTabBar::tab:first{
 }
 QTabBar::tab:first:hover{
 background-image: url(:/pic/mp31.png);
+background-color: rgb(69,229, 210)
 }
 QTabBar::tab:first:selected{
 background-image: url(:/pic/mp31.png);
+background-color: rgb(74,234, 215)
 }
 
 
@@ -88,9 +91,11 @@ QTabBar::tab:middle{
 }
 QTabBar::tab:middle:hover{
 background-image: url(:/pic/mv1.png);
+background-color: rgb(69,229, 210)
 }
 QTabBar::tab:middle:selected{
 background-image: url(:/pic/mv1.png);
+background-color: rgb(74,234, 215)
 }
 
 
@@ -105,8 +110,124 @@ QTabBar::tab:last{
 }
 QTabBar::tab:last:hover{
 background-image: url(:/pic/down1.png);
+background-color: rgb(69,229, 210)
 }
 QTabBar::tab:last:selected{
 background-image: url(:/pic/down1.png);
+background-color: rgb(74,234, 215)
 }
 
+
+QLabel#curtimeL
+{
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    text-align:center;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+QLabel#alltimeL
+{
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    text-align:center;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+QProgressBar#playtimePB
+{
+max-height:3px;
+border-radius:5px;
+text-align:center;
+background-position:center;
+background-repeat:no-repeat;
+}
+
+QProgressBar#playtimePB:chunk
+{
+max-height:3px;
+border-radius:5px;
+background-position:center;
+background-repeat:no-repeat;
+background-color: rgb(74,234, 215)
+}
+
+QComboBox#modelCB{
+    border-radius:3px;
+    padding: 1px 2px 1px 2px;
+    min-width: 32px;
+    min-height: 32px;
+    combobox-popup: 1;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color: rgb(64,224, 205)
+}
+QComboBox#modelCB::drop-down{
+    border-style: none;
+    padding: 1px 2px 1px 2px;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color: rgb(64,224, 205)
+}
+
+QPushButton#prevBtn {
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/prev.png);
+}
+QPushButton#prevBtn:hover
+{
+        background-image: url(:/pic/prev1.png);
+}
+
+QPushButton#prevBtn:pressed
+{
+        background-image: url(:/pic/prev1.png);
+}
+
+QPushButton#playBtn {
+    border:none;
+    min-width: 50px;
+    min-height: 50px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/play.png);
+}
+
+QPushButton#playBtn:hover
+{
+        background-image: url(:/pic/play1.png);
+}
+
+QPushButton#playBtn:pressed
+{
+        background-image: url(:/pic/play1.png);
+}
+
+
+QPushButton#nextBtn {
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/next.png);
+}
+
+QPushButton#nextBtn:hover
+{
+        background-image: url(:/pic/next1.png);
+}
+
+QPushButton#nextBtn:pressed
+{
+        background-image: url(:/pic/next1.png);
+}
