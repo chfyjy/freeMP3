@@ -30,13 +30,16 @@ SOURCES += \
     main.cpp \
     audiowidget.cpp \
     mvwidget.cpp \
-    downloadwidget.cpp
+    downloadwidget.cpp \
+    id3getter.cpp
 
 HEADERS += \
     widget.h \
     audiowidget.h \
     mvwidget.h \
-    downloadwidget.h
+    downloadwidget.h \
+    common.h \
+    id3getter.h
 
 FORMS += \
         widget.ui \

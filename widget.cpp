@@ -80,7 +80,7 @@ void Widget::initControls()
     alltimeL->setObjectName("alltimeL");
     playtimePB = new QProgressBar(this);
     playtimePB->setObjectName("playtimePB");
-    hideTimeInfo();
+    hideTimeInfo(true);
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     bottomLayout->addWidget(curtimeL);
     bottomLayout->addWidget(playtimePB);
@@ -128,12 +128,13 @@ void Widget::initControls()
     setLayout(allLayout);
 }
 
-void Widget::hideTimeInfo()
+void Widget::hideTimeInfo(bool hideflag)
 {
-    playtimePB->setHidden(true);
-    alltimeL->setHidden(true);
-    curtimeL->setHidden(true);
+    playtimePB->setHidden(hideflag);
+    alltimeL->setHidden(hideflag);
+    curtimeL->setHidden(hideflag);
 }
+
 void Widget::do_minBtn_clicked()
 {
     if(isMinimized())
@@ -167,5 +168,6 @@ void Widget::mouseMoveEvent(QMouseEvent *event)
 
 void Widget::mouseReleaseEvent(QMouseEvent *event)
 {
+    Q_UNUSED(event);
     mMoveing = false;
 }

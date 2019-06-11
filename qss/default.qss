@@ -231,3 +231,22 @@ QPushButton#nextBtn:pressed
 {
         background-image: url(:/pic/next1.png);
 }
+
+QPushButton#importBtn
+{
+    border:none;
+    min-width: 132px;
+    min-height: 132px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/import.png);
+}
+QPushButton#importBtn:hover
+{
+        background-image: url(:/pic/import1.png);
+}
+
+QPushButton#importBtn:pressed
+{
+        background-image: url(:/pic/import1.png);
+}

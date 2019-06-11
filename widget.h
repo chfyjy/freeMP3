@@ -1,19 +1,6 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
-#include <QWidget>
-#include <QMouseEvent>
-#include <QLabel>
-#include <QFile>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QTabWidget>
-#include <QProgressBar>
-#include <QComboBox>
-
 #include "audiowidget.h"
 #include "mvwidget.h"
 #include "downloadwidget.h"
@@ -46,7 +33,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
 private:
-    void hideTimeInfo();
+    void hideTimeInfo(bool hideflag);
 
 private:
     Ui::Widget *ui;
