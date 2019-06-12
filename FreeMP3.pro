@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -31,7 +31,7 @@ SOURCES += \
     audiowidget.cpp \
     mvwidget.cpp \
     downloadwidget.cpp \
-    id3getter.cpp
+    metadatageter.cpp
 
 HEADERS += \
     widget.h \
@@ -39,7 +39,8 @@ HEADERS += \
     mvwidget.h \
     downloadwidget.h \
     common.h \
-    id3getter.h
+    metadatageter.h \
+    mediatag.h
 
 FORMS += \
         widget.ui \

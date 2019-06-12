@@ -101,10 +101,12 @@ void Widget::initControls()
     prevBtn->setObjectName("prevBtn");
     playBtn = new QPushButton(this);
     playBtn->setObjectName("playBtn");
+    connect(playBtn, SIGNAL(clicked()), SLOT(do_playBtn_clicked()));
     nextBtn = new QPushButton(this);
     nextBtn->setObjectName("nextBtn");
     pauseBtn = new QPushButton(this);
     pauseBtn->setObjectName("pauseBtn");
+    connect(pauseBtn, SIGNAL(clicked()), SLOT(do_pauseBtn_clicked()));
     pauseBtn->setHidden(true);
     footerLayout1->addWidget(prevBtn);
     footerLayout1->addWidget(playBtn);
@@ -146,6 +148,17 @@ void Widget::do_minBtn_clicked()
 void Widget::do_closeBtn_clicked()
 {
     close();
+}
+void Widget::do_pauseBtn_clicked()
+{
+    pauseBtn->setHidden(true);
+    playBtn->setVisible(true);
+}
+
+void Widget::do_playBtn_clicked()
+{
+    playBtn->setHidden(true);
+    pauseBtn->setVisible(true);
 }
 
 void Widget::mousePressEvent(QMouseEvent *event)

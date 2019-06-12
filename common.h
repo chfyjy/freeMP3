@@ -7,6 +7,7 @@
 #include <QMouseEvent>
 #include <QLabel>
 #include <QFile>
+#include <QDir>
 #include <QFileDialog>
 #include <QPushButton>
 #include <QApplication>
@@ -14,6 +15,8 @@
 #include <QTabWidget>
 #include <QProgressBar>
 #include <QComboBox>
+#include <QMediaMetaData>
+#include <QMediaPlayer>
 
 #define NOWISDEBUG 1
 #if NOWISDEBUG

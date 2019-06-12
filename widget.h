@@ -27,6 +27,8 @@ private:
 private slots:
     void do_minBtn_clicked();
     void do_closeBtn_clicked();
+    void do_pauseBtn_clicked();
+    void do_playBtn_clicked();
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);

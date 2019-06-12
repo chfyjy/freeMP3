@@ -195,8 +195,8 @@ QPushButton#prevBtn:pressed
 
 QPushButton#playBtn {
     border:none;
-    min-width: 50px;
-    min-height: 50px;
+    min-width: 32px;
+    min-height: 32px;
     background-position:center;
     background-repeat:no-repeat;
     background-image: url(:/pic/play.png);
@@ -230,6 +230,25 @@ QPushButton#nextBtn:hover
 QPushButton#nextBtn:pressed
 {
         background-image: url(:/pic/next1.png);
+}
+
+QPushButton#pauseBtn {
+    border:none;
+    min-width: 32px;
+    min-height: 32px;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-image: url(:/pic/pause.png);
+}
+
+QPushButton#pauseBtn:hover
+{
+        background-image: url(:/pic/pause1.png);
+}
+
+QPushButton#pauseBtn:pressed
+{
+        background-image: url(:/pic/pause1.png);
 }
 
 QPushButton#importBtn

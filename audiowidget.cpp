@@ -28,7 +28,8 @@ void AudioWidget::initControls()
 
 void AudioWidget::do_importBtn_clicked()
 {
-     QString directory = QFileDialog::getExistingDirectory(this, QObject::tr("选择音频文件所在文件夹"));
+     QString directory = "D:/KuGou";//QFileDialog::getExistingDirectory(this, QObject::tr("选择音频文件所在文件夹"));
      DEBUGOUT(directory);
-    //QFileDialog
+     QDir selectedDir = QDir(directory);
+     QFileInfoList list = selectedDir.entryInfoList();
 }
