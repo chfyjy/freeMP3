@@ -1,6 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+#include "common.h"
 #include "audiowidget.h"
 #include "mvwidget.h"
 #include "downloadwidget.h"

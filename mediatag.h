@@ -93,18 +93,26 @@ struct ID3V2_TagFrame
     char size[4];  /*帧内容的大小，不包括帧头，不得小于1*/
     char flags[2]; /*存放标志，只定义了6 位，稍后详细解说*/
 };
-
+const int id3V1DataL = 128;
+const int id3TagL = 3;
+const int id3TitleL = 30;
+const int id3ArtistL = 30;
+const int id3albumL = 30;
+const int id3YearL = 4;
+const int id3CommentL = 28;
+const int GONE = 1;
+const char id3v1Tag[] = "TAG";
 struct ID3V1_header
 {
-    char header[3];          /*标签头必须是"TAG"否则认为没有标签*/
-    char title[30];          /*标题*/
-    char artist[30];         /*作者*/
-    char album[30];          /*专集*/
-    char year[4];            /*出品年代*/
-    char comment[28];        /*备注*/
-    char reserve;            /*保留*/
-    char track;              /*音轨*/
-    char genre;              /*类型*/
+    char header[id3TagL];          /*标签头必须是"TAG"否则认为没有标签*/
+    char title[id3TitleL];          /*标题*/
+    char artist[id3ArtistL];         /*作者*/
+    char album[id3albumL];          /*专集*/
+    char year[id3YearL];            /*出品年代*/
+    char comment[id3CommentL];        /*备注*/
+    char reserve[GONE];            /*保留*/
+    unsigned char track[GONE];              /*音轨*/
+    unsigned char genre[GONE];              /*类型*/
 };
 
 struct AudioMediaInfo
