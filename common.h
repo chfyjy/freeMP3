@@ -26,4 +26,6 @@
 #define DEBUGOUT(outstr)
 #endif
 
+#include "id3v1getter.h"
+
 #endif // COMMON_H

@@ -1,43 +1,47 @@
-#include "metadatageter.h"
+#include "id3v1getter.h"
 #include <QFile>
 
-
-MetaDataGeter::MetaDataGeter(const QString& filepath)
+ID3V1Getter::ID3V1Getter(const QString& filepath)
 {
-    this->filepath = filepath;
-    id3v1Data.clear();
     id3Valid = false;
-    readId3v1Data();
-    initId3V1AudioInfo();
+    initID3V1Header(readId3v1Data(filepath));
 }
 
-bool MetaDataGeter::isId3Valid()
+bool ID3V1Getter::isId3Valid()
 {
     return  id3Valid;
 }
 
-void MetaDataGeter::readId3v1Data()
+ID3V1_header ID3V1Getter::getHeader()
 {
+    return  header;
+}
+
+QByteArray ID3V1Getter::readId3v1Data(const QString& filepath)
+{
+    QByteArray id3v1Data;
     QFile file(filepath);
     if(!file.exists())
-        return;
+        return id3v1Data;
     if(!file.open(QIODevice::ReadOnly))
-        return;
+        return id3v1Data;
     file.seek(file.size()-id3V1DataL);
     id3v1Data = file.read(id3V1DataL);
     QByteArray tagData = id3v1Data.left(id3TagL);
     if(tagData == id3v1Tag)
         id3Valid = true;
     file.close();
+    return id3v1Data;
 }
 
-void MetaDataGeter::initId3V1AudioInfo()
+void ID3V1Getter::initID3V1Header(const QByteArray& id3v1Data)
 {
     if(!id3Valid)
         return;
-    ID3V1_header header;
+    if(id3v1Data.length() != id3V1DataL)
+        return;
     int startpos = 0;
-    char* tmpdata = id3v1Data.data();
+    const char* tmpdata = id3v1Data.data();
     memcpy( header.header,tmpdata+startpos, id3TagL);
     startpos += id3TagL;
     memcpy( header.title,tmpdata+startpos, id3TitleL);
@@ -55,16 +59,4 @@ void MetaDataGeter::initId3V1AudioInfo()
     memcpy(header.track, tmpdata+startpos, GONE);
     startpos += GONE;
     memcpy(header.genre, tmpdata+startpos, GONE);
-    startpos += GONE;
-    initInfoById3V1(header);
-}
-
-void MetaDataGeter::initInfoById3V1(ID3V1_header header)
-{
-    info.year = QString(header.year);
-    info.title = QString(header.title);
-    info.artist = QString(header.artist);
-    info.album = QString(header.album);
-    info.genre = genreMap[(int)(header.genre[0])];
-    info.track = (int)(header.track[0]);
 }
