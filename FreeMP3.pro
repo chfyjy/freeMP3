@@ -31,7 +31,9 @@ SOURCES += \
     audiowidget.cpp \
     mvwidget.cpp \
     downloadwidget.cpp \
-    id3v1getter.cpp
+    id3v1getter.cpp \
+    id3v2_3getter.cpp \
+    mediatag.cpp
 
 HEADERS += \
     widget.h \
@@ -40,7 +42,8 @@ HEADERS += \
     downloadwidget.h \
     common.h \
     mediatag.h \
-    id3v1getter.h
+    id3v1getter.h \
+    id3v2_3getter.h
 
 FORMS += \
         widget.ui \

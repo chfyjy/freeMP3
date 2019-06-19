@@ -2,96 +2,112 @@
 #define MEDIATAG_H
 
 #include<QMap>
-
-const char AENC[]= "AENC";        //   [#sec4.20 Audio encryption]
-const char APIC[]= "APIC";        //   [#sec4.15 Attached picture]
-const char COMM[]= "COMM";        //   [#sec4.11 Comments]
-const char COMR[]= "COMR";        //   [#sec4.25 Commercial frame]
-const char ENCR[]= "ENCR";        //   [#sec4.26 Encryption method registration]
-const char EQUA[]= "EQUA";        //   [#sec4.13 Equalization]
-const char ETCO[]= "ETCO";        //   [#sec4.6 Event timing codes]
-const char GEOB[]= "GEOB";        //   [#sec4.16 General encapsulated object]
-const char GRID[]= "GRID";        //   [#sec4.27 Group identification registration]
-const char IPLS[]= "IPLS";        //   [#sec4.4 Involved people list]
-const char LINK[]= "LINK";        //   [#sec4.21 Linked information]
-const char MCDI[]= "MCDI";        //   [#sec4.5 Music CD identifier]
-const char MLLT[]= "MLLT";        //   [#sec4.7 MPEG location lookup table]
-const char OWNE[]= "OWNE";        //   [#sec4.24 Ownership frame]
-const char PRIV[]= "PRIV";        //   [#sec4.28 Private frame]
-const char PCNT[]= "PCNT";        //   [#sec4.17 Play counter]
-const char POPM[]= "POPM";        //   [#sec4.18 Popularimeter]
-const char POSS[]= "POSS";        //   [#sec4.22 Position synchronisation frame]
-const char RBUF[]= "RBUF";        //   [#sec4.19 Recommended buffer size]
-const char RVAD[]= "RVAD";        //   [#sec4.12 Relative volume adjustment]
-const char RVRB[]= "RVRB";        //   [#sec4.14 Reverb]
-const char SYLT[]= "SYLT";        //   [#sec4.10 Synchronized lyric/text]
-const char SYTC[]= "SYTC";        //   [#sec4.8 Synchronized tempo codes]
-const char TALB[]= "TALB";        //   [#TALB Album/Movie/Show title]
-const char TBPM[]= "TBPM";        //   [#TBPM BPM (beats per minute)]
-const char TCOM[]= "TCOM";        //   [#TCOM Composer]
-const char TCON[]= "TCON";        //   [#TCON Content type]
-const char TCOP[]= "TCOP";        //   [#TCOP Copyright message]
-const char TDAT[]= "TDAT";        //   [#TDAT Date]
-const char TDLY[]= "TDLY";        //   [#TDLY Playlist delay]
-const char TENC[]= "TENC";        //   [#TENC Encoded by]
-const char TEXT[]= "TEXT";        //   [#TEXT Lyricist/Text writer]
-const char TFLT[]= "TFLT";        //   [#TFLT File type]
-const char TIME[]= "TIME";        //   [#TIME Time]
-const char TIT1[]= "TIT1";        //   [#TIT1 Content group description]
-const char TIT2[]= "TIT2";        //   [#TIT2 Title/songname/content description]
-const char TIT3[]= "TIT3";        //   [#TIT3 Subtitle/Description refinement]
-const char TKEY[]= "TKEY";        //   [#TKEY Initial key]
-const char TLAN[]= "TLAN";        //   [#TLAN Language(s)]
-const char TLEN[]= "TLEN";        //   [#TLEN Length]
-const char TMED[]= "TMED";        //   [#TMED Media type]
-const char TOAL[]= "TOAL";        //   [#TOAL Original album/movie/show title]
-const char TOFN[]= "TOFN";        //   [#TOFN Original filename]
-const char TOLY[]= "TOLY";        //   [#TOLY Original lyricist(s)/text writer(s)]
-const char TOPE[]= "TOPE";        //   [#TOPE Original artist(s)/performer(s)]
-const char TORY[]= "TORY";        //   [#TORY Original release year]
-const char TOWN[]= "TOWN";        //   [#TOWN File owner/licensee]
-const char TPE1[]= "TPE1";        //   [#TPE1 Lead performer(s)/Soloist(s)]
-const char TPE2[]= "TPE2";        //   [#TPE2 Band/orchestra/accompaniment]
-const char TPE3[]= "TPE3";        //   [#TPE3 Conductor/performer refinement]
-const char TPE4[]= "TPE4";        //   [#TPE4 Interpreted, remixed, or otherwise modified by]
-const char TPOS[]= "TPOS";        //   [#TPOS Part of a set]
-const char TPUB[]= "TPUB";        //   [#TPUB Publisher]
-const char TRCK[]= "TRCK";        //   [#TRCK Track number/Position in set]
-const char TRDA[]= "TRDA";        //   [#TRDA Recording dates]
-const char TRSN[]= "TRSN";        //   [#TRSN Internet radio station name]
-const char TRSO[]= "TRSO";        //   [#TRSO Internet radio station owner]
-const char TSIZ[]= "TSIZ";        //   [#TSIZ Size]
-const char TSRC[]= "TSRC";        //   [#TSRC ISRC (international standard recording code)]
-const char TSSE[]= "TSSE";        //   [#TSEE Software/Hardware and settings used for encoding]
-const char TYER[]= "TYER";        //   [#TYER Year]
-const char TXXX[]= "TXXX";        //   [#TXXX User defined text information frame]
-const char UFID[]= "UFID";        //   [#sec4.1 Unique file identifier]
-const char USER[]= "USER";        //   [#sec4.23 Terms of use]
-const char USLT[]= "USLT";        //   [#sec4.9 Unsychronized lyric/text transcription]
-const char WCOM[]= "WCOM";        //   [#WCOM Commercial information]
-const char WCOP[]= "WCOP";        //   [#WCOP Copyright/Legal information]
-const char WOAF[]= "WOAF";        //   [#WOAF Official audio file webpage]
-const char WOAR[]= "WOAR";        //   [#WOAR Official artist/performer webpage]
-const char WOAS[]= "WOAS";        //   [#WOAS Official audio source webpage]
-const char WORS[]= "WORS";        //   [#WORS Official internet radio station homepage]
-const char WPAY[]= "WPAY";        //   [#WPAY Payment]
-const char WPUB[]= "WPUB";        //   [#WPUB Publishers official webpage]
-const char WXXX[]= "WXXX";        //   [#WXXX User defined URL link frame]
-
+const QMap<QString, int> idMap = {
+{"AENC", 0},       //   [#sec4.20 Audio encryption]
+{"APIC", 1},       //   [#sec4.15 Attached picture]
+{"COMM", 2},       //   [#sec4.11 Comments]
+{"COMR", 3},       //   [#sec4.25 Commercial frame]
+{"ENCR", 4},       //   [#sec4.26 Encryption method registration]
+{"EQUA", 5},       //   [#sec4.13 Equalization]
+{"ETCO", 6},       //   [#sec4.6 Event timing codes]
+{"GEOB", 7},       //   [#sec4.16 General encapsulated object]
+{"GRID", 8},       //   [#sec4.27 Group identification registration]
+{"IPLS", 9},       //   [#sec4.4 Involved people list]
+{"LINK", 10},      //   [#sec4.21 Linked information]
+{"MCDI", 11},      //   [#sec4.5 Music CD identifier]
+{"MLLT", 12},      //   [#sec4.7 MPEG location lookup table]
+{"OWNE", 13},      //   [#sec4.24 Ownership frame]
+{"PRIV", 14},      //   [#sec4.28 Private frame]
+{"PCNT", 15},      //   [#sec4.17 Play counter]
+{"POPM", 16},      //   [#sec4.18 Popularimeter]
+{"POSS", 17},      //   [#sec4.22 Position synchronisation frame]
+{"RBUF", 18},      //   [#sec4.19 Recommended buffer size]
+{"RVAD", 19},      //   [#sec4.12 Relative volume adjustment]
+{"RVRB", 20},      //   [#sec4.14 Reverb]
+{"SYLT", 21},      //   [#sec4.10 Synchronized lyric/text]
+{"SYTC", 22},      //   [#sec4.8 Synchronized tempo codes]
+{"TALB", 23},      //   [#TALB Album/Movie/Show title]
+{"TBPM", 24},      //   [#TBPM BPM (beats per minute)]
+{"TCOM", 25},      //   [#TCOM Composer]
+{"TCON", 26},      //   [#TCON Content type]
+{"TCOP", 27},      //   [#TCOP Copyright message]
+{"TDAT", 28},      //   [#TDAT Date]
+{"TDLY", 29},      //   [#TDLY Playlist delay]
+{"TENC", 30},      //   [#TENC Encoded by]
+{"TEXT", 31},      //   [#TEXT Lyricist/Text writer]
+{"TFLT", 32},      //   [#TFLT File type]
+{"TIME", 33},      //   [#TIME Time]
+{"TIT1", 34},      //   [#TIT1 Content group description]
+{"TIT2", 35},      //   [#TIT2 Title/songname/content description]
+{"TIT3", 36},      //   [#TIT3 Subtitle/Description refinement]
+{"TKEY", 37},      //   [#TKEY Initial key]
+{"TLAN", 38},      //   [#TLAN Language(s)]
+{"TLEN", 39},      //   [#TLEN Length]
+{"TMED", 40},      //   [#TMED Media type]
+{"TOAL", 41},      //   [#TOAL Original album/movie/show title]
+{"TOFN", 42},      //   [#TOFN Original filename]
+{"TOLY", 43},      //   [#TOLY Original lyricist(s)/text writer(s)]
+{"TOPE", 44},      //   [#TOPE Original artist(s)/performer(s)]
+{"TORY", 45},      //   [#TORY Original release year]
+{"TOWN", 46},      //   [#TOWN File owner/licensee]
+{"TPE1", 47},      //   [#TPE1 Lead performer(s)/Soloist(s)]
+{"TPE2", 48},      //   [#TPE2 Band/orchestra/accompaniment]
+{"TPE3", 49},      //   [#TPE3 Conductor/performer refinement]
+{"TPE4", 50},      //   [#TPE4 Interpreted, remixed, or otherwise modified by]
+{"TPOS", 51},      //   [#TPOS Part of a set]
+{"TPUB", 52},      //   [#TPUB Publisher]
+{"TRCK", 53},      //   [#TRCK Track number/Position in set]
+{"TRDA", 54},      //   [#TRDA Recording dates]
+{"TRSN", 55},      //   [#TRSN Internet radio station name]
+{"TRSO", 56},      //   [#TRSO Internet radio station owner]
+{"TSIZ", 57},      //   [#TSIZ Size]
+{"TSRC", 58},      //   [#TSRC ISRC (international standard recording code)]
+{"TSSE", 59},      //   [#TSEE Software/Hardware and settings used for encoding]
+{"TYER", 60},      //   [#TYER Year]
+{"TXXX", 61},      //   [#TXXX User defined text information frame]
+{"UFID", 62},      //   [#sec4.1 Unique file identifier]
+{"USER", 63},      //   [#sec4.23 Terms of use]
+{"USLT", 64},      //   [#sec4.9 Unsychronized lyric/text transcription]
+{"WCOM", 65},      //   [#WCOM Commercial information]
+{"WCOP", 66},      //   [#WCOP Copyright/Legal information]
+{"WOAF", 67},      //   [#WOAF Official audio file webpage]
+{"WOAR", 68},      //   [#WOAR Official artist/performer webpage]
+{"WOAS", 69},      //   [#WOAS Official audio source webpage]
+{"WORS", 70},      //   [#WORS Official internet radio station homepage]
+{"WPAY", 71},      //   [#WPAY Payment]
+{"WPUB", 72},      //   [#WPUB Publishers official webpage]
+{"WXXX", 73},      //   [#WXXX User defined URL link frame]
+};
+const int GONE = 1;
+const int ID3V2_headerL = 10;
+const int ID3V2_headerheaderL = 3;
+const int ID3V2_headersizeL = 4;
+const char ID3[] = "ID3";
 struct ID3V2_header
 {
-    char header[3]; /*必须为“ID3”否则认为标签不存在*/
-    char version;   /*版本号ID3V2.3 就记录3*/
-    char revision;  /*副版本号此版本记录为0*/
-    char flag;      /*标志字节，只使用高三位，其它位为0 */
-    char size[4];   /*标签大小*/
+    char header[ID3V2_headerheaderL]; /*必须为“ID3”否则认为标签不存在*/
+    char version[GONE];   /*版本号ID3V2.3 就记录3*/
+    char revision[GONE];  /*副版本号此版本记录为0*/
+    char flag[GONE];      /*标志字节，只使用高三位，其它位为0 不作处理*/
+    char size[ID3V2_headersizeL];   /*标签大小*/
 };
 
+const int ID3V2_TagFrameL = 10;
+const int ID3V2_TagFrameidL = 4;
+const int ID3V2_TagFramesizeL = 4;
+const int ID3V2_TagFrameflagsL = 2;
 struct ID3V2_TagFrame
 {
-    char id[4];    /*用四个字符标识一个帧，说明其内容，稍后有常用的标识对照表*/
-    char size[4];  /*帧内容的大小，不包括帧头，不得小于1*/
-    char flags[2]; /*存放标志，只定义了6 位，稍后详细解说*/
+    char id[ID3V2_TagFrameidL];    /*用四个字符标识一个帧，说明其内容，稍后有常用的标识对照表*/
+    char size[ID3V2_TagFramesizeL];  /*帧内容的大小，不包括帧头，不得小于1*/
+    char flags[ID3V2_TagFrameflagsL]; /*存放标志，只定义了6 位 char的高3位*/
+    unsigned tag_volit  : 1;/*标志*/
+    unsigned file_volit : 1;/*标志*/
+    unsigned readonly   : 1;/*标志*/
+    unsigned packed     : 1;/*标志*/
+    unsigned encrypted  : 1;/*标志*/
+    unsigned grouped    : 1;/*标志*/
+    size_t isize;
 };
 const int id3V1DataL = 128;
 const int id3TagL = 3;
@@ -100,7 +116,6 @@ const int id3ArtistL = 30;
 const int id3albumL = 30;
 const int id3YearL = 4;
 const int id3CommentL = 28;
-const int GONE = 1;
 const char id3v1Tag[] = "TAG";
 struct ID3V1_header
 {
@@ -115,7 +130,7 @@ struct ID3V1_header
     unsigned char genre[GONE];              /*类型*/
 };
 
-struct AudioMediaInfo
+struct AudioInfo
 {
     QString title;
     QString artist;
@@ -276,5 +291,8 @@ const QMap<int, QString> genreMap = {
 {146,"JPop"                     },
 {147,"Synthpop"                 }
 };
+
+int getBit(char src, int bnum) ;
+
 
 #endif // MEDIATAG_H

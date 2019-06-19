@@ -17,6 +17,11 @@ ID3V1_header ID3V1Getter::getHeader()
     return  header;
 }
 
+QString ID3V1Getter::getGenre()
+{
+    return genre;
+}
+
 QByteArray ID3V1Getter::readId3v1Data(const QString& filepath)
 {
     QByteArray id3v1Data;
@@ -59,4 +64,7 @@ void ID3V1Getter::initID3V1Header(const QByteArray& id3v1Data)
     memcpy(header.track, tmpdata+startpos, GONE);
     startpos += GONE;
     memcpy(header.genre, tmpdata+startpos, GONE);
+
+    genre = genreMap[(int)header.genre[0]];
+    //delete tmpdata;
 }
