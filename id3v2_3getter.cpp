@@ -1,7 +1,10 @@
 #include "id3v2_3getter.h"
 #include <QFile>
-
+#include <iostream>
+#include <fstream>
 #include "common.h"
+
+using namespace std;
 
 ID3V2_3Getter::ID3V2_3Getter(const QString& filepath)
 {
@@ -88,40 +91,36 @@ void ID3V2_3Getter::readTagFrame(const QString& filepath)
 {
     if(!id3Valid)
         return;
-    QFile file(filepath);
-    if(!file.exists())
-        return ;
-    if(!file.open(QIODevice::ReadOnly))
-        return ;
 
-    file.seek(ID3V2_headerL);
-    QByteArray allframe = file.read(ID3V2_TagFrame_size - ID3V2_headerL);
-    file.close();
-    DEBUGOUT(allframe.left(30));
-    if(allframe.size() != (ID3V2_TagFrame_size - ID3V2_headerL))
+    wfstream filei(filepath.toLocal8Bit());
+    if(!filei)
+    {
+        DEBUGOUT("err");
         return;
+    }
+
+    DEBUGOUT(ID3V2_TagFrame_size);
+    wchar_t* wcone = new wchar_t[1];
+    wchar_t* allframe = new wchar_t[ID3V2_TagFrame_size];
+    wstring wstr;
+    int i = 0;
+    while(!filei.eof()&&filei.peek()!=EOF)
+    {
+        filei.read(wcone, 1);
+        wmemcpy(allframe+i, wcone, 1);
+        wstr+= wcone;
+        i++;
+        //DEBUGOUT(i);
+        if(i >= ID3V2_TagFrame_size)
+            break;
+    }
+
+//    QByteArray allframe =
+//    DEBUGOUT(allframe);
+//    if(allframe.size() != (ID3V2_TagFrame_size - ID3V2_headerL))
+//        return;
 
     int tagid;
     ID3V2_TagFrame tagframe;
-    int pos = 0;
-    size_t tsize;
-    QByteArray tagframedata, tagdata;
-//    do
-//    {
-        tagid = -1;
-
-        tagframe = initTagFrame(allframe.mid(0, ID3V2_TagFrameL));
-        pos += ID3V2_TagFrameL;
-        tsize = tagframe.isize;
-        tagdata = allframe.mid(0, ID3V2_TagFrameL + tsize);
-        DEBUGOUT(tsize);
-        DEBUGOUT(tagdata.size());
-        DEBUGOUT(tagdata.right(tsize));
-        tagid = idMap[QString(tagframe.id)];
-        DEBUGOUT(tagid);
-
-
-    //}while(tagid != -1);
-
     DEBUGOUT("end");
 }
