@@ -15,13 +15,14 @@ public:
 private:
     void initID3V2_header(const QString& filepath);
     void readTagFrame(const QString& filepath);
-    void initID3V1_header(int tagid, const char* tagdata);
+    void initID3V1_header(int tagid, const char* tagdata, int len);
+    int getTagFrame(const char* tag, char* tagdata);
 private:
     bool id3Valid;
     ID3V1_header header1;
     ID3V2_header header2;
     int ID3V2_TagFrame_size;
-    QString genre;
+    QString genre, allframe;
 };
 
 #endif // ID3V2_3GETTER_H
