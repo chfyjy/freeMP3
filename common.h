@@ -1,7 +1,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-
 #include <QWidget>
 #include <QLayout>
 #include <QMouseEvent>
@@ -17,6 +16,9 @@
 #include <QComboBox>
 #include <QMediaMetaData>
 #include <QMediaPlayer>
+
+
+#include "ffmpeg.h"
 
 #define NOWISDEBUG 1
 #if NOWISDEBUG
