@@ -30,10 +30,7 @@ SOURCES += \
     main.cpp \
     audiowidget.cpp \
     mvwidget.cpp \
-    downloadwidget.cpp \
-    id3v1getter.cpp \
-    id3v2_3getter.cpp \
-    mediatag.cpp
+    downloadwidget.cpp
 
 HEADERS += \
     widget.h \
@@ -41,15 +38,26 @@ HEADERS += \
     mvwidget.h \
     downloadwidget.h \
     common.h \
-    mediatag.h \
-    id3v1getter.h \
-    id3v2_3getter.h
+    ffmpeg.h
 
 FORMS += \
         widget.ui \
     audiowidget.ui \
     mvwidget.ui \
     downloadwidget.ui
+
+
+LIBS += -L$$PWD/../ffmpeg/lib/ -lavdevice
+LIBS += -L$$PWD/../ffmpeg/lib/ -lavcodec
+LIBS += -L$$PWD/../ffmpeg/lib/ -lavfilter
+LIBS += -L$$PWD/../ffmpeg/lib/ -lavformat
+LIBS += -L$$PWD/../ffmpeg/lib/ -lavutil
+LIBS += -L$$PWD/../ffmpeg/lib/ -lpostproc
+LIBS += -L$$PWD/../ffmpeg/lib/ -lswresample
+LIBS += -L$$PWD/../ffmpeg/lib/ -lswscale
+
+INCLUDEPATH += $$PWD/../ffmpeg/include
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
